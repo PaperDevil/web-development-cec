@@ -8,5 +8,5 @@
 ```$ gcc --version``` \
 4) Создаём отдельное окружение для модулей Go \
 ```$ go mod init github.com/PaperDevil/web-development-cec/lesson_one/golang``` \
-5) Устанавливаем пакет go-martini/martini \
-```$ go get github.com/go-martini/martin``` \
+5) Устанавливаем пакет gin-gonic/gin \
+```$ go get github.com/gin-gonic/gin``` \

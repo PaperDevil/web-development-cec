@@ -1,28 +1,28 @@
 import json
 
-from flask import Flask
+from flask import Flask, jsonify
 
 
-app = Flask(__name__)
+app = Flask(__name__)  # Создание экземпляра приложения
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def index() -> str:
     """Стартовая страница приложения"""
     return "Привет мир!"
 
-@app.route("/user/<username>")
+@app.route("/user/<username>", methods=['GET'])
 def get_user(username: str) -> str:
     """Страница приветствия Юзера"""
     return f"Привет, {username}!"
 
-@app.route("/user/get/<username>")
+@app.route("/user/<username>/get", methods=['GET'])
 def get_json_user(username: str) -> str:
     """Получение JSON с именем юзера"""
-    return json.dumps({
+    return jsonify({
         "username": username
     })
 
-@app.route("/user/update/<username>", methods=['POST'])
+@app.route("/user/<username>/update", methods=['POST'])
 def update_user(username: str) -> str:
     """Метод, к которому мы не получим доступ"""
     return "Какое-то действие с юзером"
