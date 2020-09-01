@@ -17,7 +17,8 @@ func main() {
 	// Роутинг
 	server.Gin.GET("/", func (c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"title": "Hello, my Lord!",
+			"title": "Здравствуй Мир!",
+			"username": "Данил",
 		})
 	})
 
