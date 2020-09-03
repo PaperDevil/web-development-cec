@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <form action="/native-form" method='post'>
+            <div class="form-group">
+                <label for="username-input">Enter username</label>
+                <input type="text" name="username" placeholder="PaperDevil" id="username-input" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="email-input">Enter email</label>
+                <input type="text" name="email" placeholder="example@email.com" id="email-input" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success btn-block">
+            </div>
+        </form>
+    </div>
+{% endblock content %}
