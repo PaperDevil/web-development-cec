@@ -1,9 +1,22 @@
 package main
 
 import (
-	"fmt"
+	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func main() {
-	fmt.Println("hello world")
+	server := gin.Default()
+
+	// Генерация формы...
+
+	// Нативная форма
+	server.GET('/native-formm', func(c *gin.Context) {
+		c.HTML(http.StatusOK, '', nil)
+	})
+	server.POST('/native-form', func(c *gin.Context) {
+		//...
+	})
+
+	server.Run()
 }
