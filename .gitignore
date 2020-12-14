@@ -1,3 +1,4 @@
 ./venv
 ./lesson_one/python/venv
 ./lesson_one/golang/go.sum
+./python-server/venv
