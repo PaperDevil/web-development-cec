@@ -45,7 +45,7 @@ export default {
         console.log(`Удаление элемента с именем ${this.msg}`);
       }
       this.isDelete = !this.isDelete;
-    },
+    }
   },
   computed: {
     needToShow() {
@@ -53,10 +53,13 @@ export default {
       return !(this.isComplete && this.hideComplete);
     },
   },
+  created() {
+    console.log(this.msg)
+  },
 };
 </script>
 
-<style lang="stylus" scoped>
+<style scoped>
 .TodoItem {
   display: flex;
   flex-direction: row;
