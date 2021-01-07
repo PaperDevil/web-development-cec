@@ -1,4 +1,8 @@
 ./venv
 ./lesson_one/python/venv
 ./lesson_one/golang/go.sum
-./python-server/venv
+./python-server/venv/
+./python-server/env/
+./todo-vue/node_modules/
+./python-server/.idea/
+./python-server/database.db
