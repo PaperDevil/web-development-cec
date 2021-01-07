@@ -40,6 +40,7 @@ export default {
     deleteOrRetore() {
       fetch(this.API_URL + `/delete/${this.id}`, {
           method: 'DELETE',
+          mode: 'same-origin',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -48,6 +49,7 @@ export default {
     setComplete() {
       fetch(this.API_URL + `/complete/${this.id}`, {
           method: 'POST',
+          mode: 'same-origin',
           headers: {
             'Content-Type': 'application/json'
           },

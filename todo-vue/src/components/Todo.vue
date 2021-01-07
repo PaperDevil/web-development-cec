@@ -46,6 +46,7 @@ export default {
         let text = this.input;
         fetch(this.API_URL + '/create', {
           method: 'POST',
+          mode: 'same-origin',
           body: JSON.stringify({ text }),
           headers: {
             'Content-Type': 'application/json'
@@ -55,7 +56,8 @@ export default {
     },
     updateList() {
       fetch(this.API_URL + '/list', {
-        method: 'GET'
+        method: 'GET',
+        mode: 'same-origin'
       })
       .then((response) => {
         return response.json()
