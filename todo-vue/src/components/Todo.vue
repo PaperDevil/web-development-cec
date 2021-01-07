@@ -1,16 +1,29 @@
 <template>
-  <div class="">
-    <label for="input-2x">TODO :</label>
+  <div class="header">
+    <!-- Header -->
+    <h1>Todo List</h1>
     <input
       type="text"
       name="input-2x"
       v-model="input"
       placeholder="Что ты хочешь сделать?"
+      class="fs-3 text m-2"
     />
-    <input type="button" @click="addTodo()" value="Добавить" />
-    <input type="checkbox" v-model="showDelete" />
-    <input type="checkbox" v-model="hideComplete" />
+    <input class="btn-success mx-2" type="button" @click="addTodo()" value="Добавить" />
+    <div class="controls">
+      <div class="my-1">
+        <input type="checkbox" id="checkbox-1" v-model="showDelete" />
+        <label for="checkbox-1">Show Delete</label>
+      </div>
+      <div class="my-1">
+        <input type="checkbox" id="checkbox-2" v-model="hideComplete" />
+        <label for="checkbox-2">Hide Complete</label>
+      </div>
+    </div>
     <hr />
+    <!-- End Header -->
+
+    <!-- Todo List -->
     <div class="" v-for="todo in todos" :key="todo">
       <TodoItem
         :id="todo.id"
@@ -21,6 +34,7 @@
         :hideComplete="hideComplete"
       />
     </div>
+    <!-- End Todo List -->
   </div>
 </template>
 
@@ -78,4 +92,18 @@ export default {
 </script>
 
 <style scoped>
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 5%;
+}
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+
+}
 </style>

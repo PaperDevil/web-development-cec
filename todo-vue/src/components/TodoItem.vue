@@ -10,7 +10,7 @@
       />
       <h4 v-if="isComplete" style="text-decoration: line-through">{{ msg }}</h4>
       <h4 v-else>{{ msg }}</h4>
-      <input class="control-button" type="button" value="Восстановить" @click="deleteOrRetore()" />
+      <input class="control-button btn-secondary" type="button" value="Восстановить" @click="deleteOrRetore()" />
     </div>
   </div>
   <div v-else class="TodoItem" v-show="needToShow">
@@ -23,7 +23,7 @@
     />
     <h4 v-if="isComplete" style="text-decoration: line-through">{{ msg }}</h4>
     <h4 v-else>{{ msg }}</h4>
-    <input class="control-button" type="button" value="Удалить" @click="deleteOrRetore()" />
+    <input class="control-button btn-danger" type="button" value="Удалить" @click="deleteOrRetore()" />
   </div>
 </template>
 
