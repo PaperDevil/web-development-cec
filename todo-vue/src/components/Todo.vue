@@ -13,7 +13,10 @@
     <hr />
     <div class="" v-for="todo in todos" :key="todo">
       <TodoItem
+        :id="todo.id"
         :msg="todo.text"
+        :isComplete="todo.is_complete"
+        :isDelete="todo.is_delete"
         :showDelete="showDelete"
         :hideComplete="hideComplete"
       />
@@ -41,23 +44,17 @@ export default {
     addTodo() {
       if (this.input) {
         let text = this.input;
-        fetch(this.API_URL, {
+        fetch(this.API_URL + '/create', {
           method: 'POST',
           body: JSON.stringify({ text }),
           headers: {
             'Content-Type': 'application/json'
           },
         })
-
-        console.log(`Мы нажали кнопку "Добавить" при тексте ${this.input}`);
       }
     },
     updateList() {
-
-      console.log(this.todo)
-
-      console.log('Start updating')
-      fetch(this.API_URL, {
+      fetch(this.API_URL + '/list', {
         method: 'GET'
       })
       .then((response) => {
@@ -73,7 +70,7 @@ export default {
     },
   },
   created() {
-    setInterval(this.updateList, 2000)
+    setInterval(this.updateList, 600)
   }
 };
 </script>

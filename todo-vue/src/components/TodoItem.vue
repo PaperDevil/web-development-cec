@@ -1,16 +1,16 @@
 <template>
-  <div v-if="isDelete" class="TodoItem">
-    <div v-if="showDelete" class="" v-show="needToShow">
+  <div v-if="isDelete">
+    <div v-if="showDelete" class="TodoItem" v-show="needToShow">
       <input
         class="input-check"
         type="checkbox"
         name="complete"
         v-model="isComplete"
-        id=""
+        @click="setComplete()"
       />
       <h4 v-if="isComplete" style="text-decoration: line-through">{{ msg }}</h4>
       <h4 v-else>{{ msg }}</h4>
-      <input type="button" value="Восстановить" @click="deleteOrRetore()" />
+      <input class="control-button" type="button" value="Восстановить" @click="deleteOrRetore()" />
     </div>
   </div>
   <div v-else class="TodoItem" v-show="needToShow">
@@ -19,32 +19,39 @@
       type="checkbox"
       name="complete"
       v-model="isComplete"
-      id=""
+      @click="setComplete()"
     />
     <h4 v-if="isComplete" style="text-decoration: line-through">{{ msg }}</h4>
     <h4 v-else>{{ msg }}</h4>
-    <input type="button" value="Удалить" @click="deleteOrRetore()" />
+    <input class="control-button" type="button" value="Удалить" @click="deleteOrRetore()" />
   </div>
 </template>
 
 <script>
 export default {
   name: "TodoItem",
-  props: ["msg", "showDelete", "hideComplete"],
-  data: function () {
+  props: ["id", "msg", "isComplete", "isDelete", "showDelete", "hideComplete"],
+  data () {
     return {
-      isComplete: false,
-      isDelete: false,
-    };
+      API_URL: 'http://127.0.0.1:5000/'
+    }
   },
   methods: {
     deleteOrRetore() {
-      if (this.isDelete) {
-        console.log(`Восстановление элемента с именем ${this.msg}`);
-      } else {
-        console.log(`Удаление элемента с именем ${this.msg}`);
-      }
-      this.isDelete = !this.isDelete;
+      fetch(this.API_URL + `/delete/${this.id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        })
+    },
+    setComplete() {
+      fetch(this.API_URL + `/complete/${this.id}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        })  
     }
   },
   computed: {
@@ -68,9 +75,16 @@ export default {
   justify-content: middle;
   border: 1px solid black;
   padding: 3px;
+  margin-bottom: 10px;
 }
 
 .input-check {
-  margin-right: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 15px;;
+}
+
+.control-button {
+  margin-left: auto;
 }
 </style>
